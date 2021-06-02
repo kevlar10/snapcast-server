@@ -5,9 +5,13 @@ FROM $BUILD_FROM
 RUN apt update \
  && apt install -y wget \
  && wget https://github.com/badaix/snapcast/releases/download/v0.25.0/snapserver_0.25.0-1_amd64.deb \
- && dpkg -i snapserver_0.25.0-1_amd64.deb \
+ 
+ RUN
+ dpkg -i snapserver_0.25.0-1_amd64.deb
  && apt-get -f install \
- && rm -rf /var/lib/apt/lists/*
+ 
+ RUN
+ rm -rf /var/lib/apt/lists/*
 
 COPY snapserver.conf /etc/snapserver.conf
 
