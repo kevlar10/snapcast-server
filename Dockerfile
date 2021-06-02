@@ -3,7 +3,7 @@ ARG BUILD_FROM=debian:buster-slim
 FROM $BUILD_FROM
 
 RUN apt update \
- && apt install -y wget \
+ && apt install -y wget dpkg \
  && wget https://github.com/badaix/snapcast/releases/download/v0.25.0/snapserver_0.25.0-1_amd64.deb \
  
  RUN
@@ -13,7 +13,7 @@ RUN apt update \
  RUN
  rm -rf /var/lib/apt/lists/*
 
-COPY snapserver.conf /etc/snapserver.conf
+COPY snapserver.conf /etc/default/snapserver.conf
 
 VOLUME ["/tmp"]
 
