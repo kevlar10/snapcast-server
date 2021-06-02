@@ -10,10 +10,12 @@ RUN apt update \
 
 COPY snapserver.conf /etc/snapserver.conf
 
-VOLUME ["/root/.cache/mopidy", "/root/.local/share/mopidy"]
+VOLUME ["/tmp"]
 
 ENV TZ=America/Toronto
 
-EXPOSE 6600 6680
+EXPOSE 1704 1704
 
-ENTRYPOINT ["mopidy"]
+EXPOSE 1705 1705
+
+ENTRYPOINT ["snapserver -s pipe:///tmp/snapfifo?name=Music&sampleformat=44100:16:2"]
