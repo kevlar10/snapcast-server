@@ -1,6 +1,4 @@
-ARG BUILD_FROM=debian:buster-slim
-
-FROM $BUILD_FROM
+FROM debian:buster-slim 
 
 RUN apt update \
  && apt install -y wget \
@@ -16,10 +14,10 @@ COPY snapserver.conf /etc/default/snapserver.conf
 
 VOLUME ["/tmp"]
 
-ENV TZ=America/Toronto
-
 EXPOSE 1704 1704
 
 EXPOSE 1705 1705
+
+EXPOSE 1780 1780
 
 ENTRYPOINT ["snapserver"]
